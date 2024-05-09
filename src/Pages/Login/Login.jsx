@@ -4,7 +4,7 @@ import back from '../../assets/Stacked_Wave.jpg';
 const Login = () => {
     return (
         <div className="relative flex justify-center">
-            <img src={back} alt="" className="absolute z-0 h-[900px] w-full" />
+            <img src={back} alt="" className="absolute z-0 h-[900px] w-full object-cover object-center" />
             <div className={` absolute z-10 top-40 container mx-auto flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-50 dark:text-gray-800`}>
                 <div>
                     <div className="mb-8 text-center">
@@ -36,13 +36,13 @@ const Login = () => {
                         <div className="space-y-4">
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm text-white">Email address</label>
-                                <input type="email text-white" name="email" id="email" placeholder="your email" className="w-full px-3 py-2 border-b-[#431A20] border-b placeholder-[#431A20] focus:placeholder-transparent focus:border-b-[#431A20] duration-150 focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-[#724F54]" />
+                                <input type="email text-white" name="email" id="email" placeholder="your email" className="w-full px-3 py-2 border-b-[#431A20] border-b placeholder-[#431A20] focus:placeholder-transparent focus:border-b-[#431A20] duration-150 focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                             </div>
                             <div>
                                 <div className="flex justify-between mb-2">
                                     <label htmlFor="password" className="text-sm text-white">Password</label>
                                 </div>
-                                <input type="password" name="password" id="password" placeholder="password" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-[#724F54]" />
+                                <input type="password" name="password" id="password" placeholder="password" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                             </div>
                         </div>
                         <div className="space-y-2">
