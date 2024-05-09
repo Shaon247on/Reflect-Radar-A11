@@ -4,7 +4,12 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'playfair': ['Playfair Display', 'serif'],
+        'raleway': ['Raleway', 'sans-serif']
+      },
+    },
   },
   plugins: [require('daisyui')],
 }

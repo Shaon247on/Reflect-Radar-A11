@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-      <h1>Vite + React</h1>
+      <h1 className=' text-4xl'>Vite Y y + React</h1>
     </>
   )
 }
