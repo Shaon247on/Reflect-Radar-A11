@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",],
   theme: {
     extend: {
+      backgroundColor:{
+        'backPlay': 'url(../../src/assets/Stacked Wave.svg")'
+      },
       fontFamily: {
         'playfair': ['Playfair Display', 'serif'],
         'raleway': ['Raleway', 'sans-serif']
