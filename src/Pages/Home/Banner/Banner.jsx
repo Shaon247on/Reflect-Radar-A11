@@ -16,7 +16,7 @@ const Banner = () => {
                 <p className='text-white text-center mt-2 md:mt-5 text-[10px] md:text-base'>Join our community to share product concerns, discover alternative solutions, and engage with fellow users for informed choices and better shopping experiences.</p>
                 <div className='flex items-center justify-center gap-7 mt-2 lg:mt-5'>
                     <p className='text-white text-[14px] md:text-base'>Explore More</p>
-                    <Link><button className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-300 border-none"><FaArrowRightLong className='text-white text-base md:text-xl'></FaArrowRightLong></button></Link>
+                    <Link to='/queries'><button className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-500 border-none"><FaArrowRightLong className='text-white text-base md:text-xl'></FaArrowRightLong></button></Link>
                 </div>
             </div>
         </div>

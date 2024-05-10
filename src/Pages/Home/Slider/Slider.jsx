@@ -22,7 +22,7 @@ const Slider = () => {
             </div>
             <div>
                 <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y, EffectFade]}
+                    modules={[Navigation, Scrollbar, A11y, EffectFade]}
                     effect="fade"
                     spaceBetween={50}
                     slidesPerView={1}
@@ -43,7 +43,7 @@ const Slider = () => {
                             <div className='absolute inset-0 bg-gradient-to-r from-black rounded-xl opacity-10 w-[90%] mx-auto group-hover:opacity-50 duration-300' />
                             <div className='relative flex flex-col gap-3 justify-center'>
                                 <div className='absolute top-6 md:top-48 left-3 md:left-20 w-[300px] md:w-[500px]'>
-                                    <h1 className='text-2xl md:text-5xl font-bold font-playfair mb-4'>See the difference? <br />Find better alternatives text-2xl md:effortlessly.</h1>
+                                    <h1 className='text-2xl md:text-5xl font-bold font-playfair mb-4'>See the difference? <br />Find better alternatives.</h1>
                                     <p>Quickly discern between product quality. Effortlessly discover superior alternatives by comparing damaged goods to pristine options side by side.</p>
                                 </div>
                             </div>
