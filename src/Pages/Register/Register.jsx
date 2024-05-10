@@ -1,23 +1,50 @@
+import { Link } from "react-router-dom";
+import back from '../../assets/Stacked_Wave.jpg';
 
 const Register = () => {
     return (
-        <div className="flex flex-col items-center justify-center text-center dark:bg-gray-50 dark:text-gray-800">
-            <div className="mb-8 text-center">
-                <h1 className="my-3 text-4xl font-extrabold font-playfair">Sign Up</h1>
-                <p className="text-sm dark:text-gray-600">Sign in to access your account</p>
-            </div>
-            <form noValidate="" action="" className="flex flex-col w-full max-w-lg p-12 rounded shadow-lg dark:text-gray-800">
-                <label htmlFor="username" className="self-start text-xs font-semibold">Username or Email</label>
-                <input id="username" type="text" className="flex items-center h-12 px-4 mt-2 rounded dark:text-gray-50 focus:outline-none focus:ring-2 focus:dark:border-violet-600 focus:dark:ring-violet-600" />
-                <label htmlFor="password" className="self-start mt-3 text-xs font-semibold">Password</label>
-                <input id="password" type="password" className="flex items-center h-12 px-4 mt-2 rounded dark:text-gray-50 focus:outline-none focus:ring-2 focus:dark:border-violet-600 focus:dark:ring-violet-600" />
-                <button type="submit" className="flex items-center justify-center h-12 px-6 mt-8 text-sm font-semibold rounded dark:bg-violet-600 dark:text-gray-50">Login</button>
-                <div className="flex justify-center mt-6 space-x-2 text-xs">
-                    <a rel="noopener noreferrer" href="#" className="dark:text-gray-600">Forgot Password?</a>
-                    <span className="dark:text-gray-600">/</span>
-                    <a rel="noopener noreferrer" href="#" className="dark:text-gray-600">Sign Up</a>
+        <div className="flex flex-col relative items-center">
+
+            <img src={back} alt="" className="absolute z-0 h-[900px] w-full object-cover md:object-fill" />
+
+            <div className="absolute z-10 top-40 w-[400px]">
+                <div className="mb-8 text-center">
+                    <h1 className="my-3 text-5xl font-extrabold font-playfair text-white">Sign Up</h1>
+                    <p className="text-sm text-white">Sign in to access your account</p>
                 </div>
-            </form>
+                <form noValidate="" action="" className="space-y-12">
+                    <div className="space-y-4">
+                        <div>
+                            <label htmlFor="email" className="block mb-2 text-sm text-white">Your Name</label>
+                            <input type="text" name="text" id="email" placeholder="your email" className="w-full px-3 py-2 border-b-[#431A20] border-b placeholder-[#431A20] focus:placeholder-transparent focus:border-b-[#431A20] duration-150 focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                        </div>                        
+                        <div>
+                            <label htmlFor="email" className="block mb-2 text-sm text-white">Email address</label>
+                            <input type="email" name="name" id="email" placeholder="your name" className="w-full px-3 py-2 border-b-[#431A20] border-b placeholder-[#431A20] focus:placeholder-transparent focus:border-b-[#431A20] duration-150 focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                        </div>                        
+                        <div>
+                            <div className="flex justify-between mb-2">
+                                <label htmlFor="password" className="text-sm text-white">Photo URL</label>
+                            </div>
+                            <input type="text" name="photo" id="password" placeholder="photo url" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                        </div>
+                        <div>
+                            <div className="flex justify-between mb-2">
+                                <label htmlFor="password" className="text-sm text-white">Password</label>
+                            </div>
+                            <input type="password" name="password" id="password" placeholder="password" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <div>
+                            <button className="w-full px-8 py-3 font-semibold rounded-md bg-[#CB2903] text-white hover:bg-[#431A20] duration-500">Sign Up</button>
+                        </div>
+                        <p className="px-6 text-sm text-center dark:text-gray-600">Already have an account?
+                            <Link to='/login' rel="noopener noreferrer" href="#" className="hover:underline hover:text-[#431A20] duration-300 underline"> Login</Link>.
+                        </p>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
