@@ -8,6 +8,9 @@ export default {
       backgroundColor:{
         'backPlay': 'url(../../src/assets/Stacked Wave.svg")'
       },
+      backgroundImage:{
+        'slider1': 'url(../../src/assets/slider1.jpg")'
+      },
       fontFamily: {
         'playfair': ['Playfair Display', 'serif'],
         'raleway': ['Raleway', 'sans-serif']
