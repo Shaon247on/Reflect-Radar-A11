@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate, useNavigation } from "react-router-dom";
 import back from '../../assets/Stacked_Wave.jpg';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -7,6 +7,9 @@ const Login = () => {
     const [textColor, setTextColor] = useState(true)
     const [textColor2, setTextColor2] = useState(true)
     const {logIn} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location)
 
 
     const handleLogin = (e)=>{
@@ -19,6 +22,9 @@ const Login = () => {
         .then(result =>{
             const loginUser = result.user
             console.log(loginUser)
+            navigate(location.state? 
+                location?.state: '/'
+            )
         })
         .catch(error=> console.error(error))
     }

@@ -1,15 +1,28 @@
 
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/Creative.jpg'
+import { useContext } from 'react';
+import { AuthContext } from '../../../Provider/AuthProvider';
+import auth from '../../../firebase/firebase.config';
 const NavBar = () => {
-   
+
+    const { logOut, user} = useContext(AuthContext)
+
     const navButtons = <>
-    <li><NavLink  to='/'>Home</NavLink></li>
-    <li><NavLink to='/queries'>queries</NavLink></li>
-    <li><NavLink to='/contactus'>Contact Us</NavLink></li>
-    
-    
+        <li><NavLink to='/'>Home</NavLink></li>
+        <li><NavLink to='/queries'>queries</NavLink></li>
+        <li><NavLink to='/contactus'>Contact Us</NavLink></li>
     </>
+
+
+    const handleLogOut = () => {
+        logOut(auth)
+        .then(result => {
+            const user = result.user
+            console(user)
+        })
+        .catch(error=> console.error(error))
+    }
     return (
         <div className="navbar bg-base-100 container mx-auto ">
             <div className="navbar-start">
@@ -21,15 +34,22 @@ const NavBar = () => {
                         {navButtons}
                     </ul>
                 </div>
-                <Link><img src={logo} alt="" className='w-28 md:w-40 hover:scale-105 duration-300 ease-in-out'/></Link>
+                <Link><img src={logo} alt="" className='w-28 md:w-40 hover:scale-105 duration-300 ease-in-out' /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    {navButtons}                    
+                    {navButtons}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className="rounded-lg px-10 py-3 text-whitehome bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Login</button></Link>
+                {
+                    user? 
+                    <>
+                    <img alt="No Image" />
+                    <Link to='/login'><button onClick={handleLogOut} className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Sign Out</button></Link>
+                    </>:
+                    <Link to='/login'><button className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Login</button></Link>
+                }
             </div>
         </div>
     );

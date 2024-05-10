@@ -5,11 +5,14 @@ import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
 import Home from '../Pages/Home/Home/Home';
 import AllQueries from '../Pages/AllQuries/AllQueries/AllQueries';
+import ErrorPage from '../Pages/ErrorPage/ErrorPage';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
           path: '/',
@@ -23,7 +26,7 @@ const router = createBrowserRouter([
         },
         {
           path: '/contactus',
-          element: <ContactUs></ContactUs>
+          element: <PrivateRoute><ContactUs></ContactUs></PrivateRoute>
         },
         {
           path: '/login',
