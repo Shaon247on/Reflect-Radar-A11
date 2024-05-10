@@ -1,11 +1,28 @@
 import { Link } from "react-router-dom";
 import back from '../../assets/Stacked_Wave.jpg';
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
     const [textColor, setTextColor] = useState(true)
     const [textColor2, setTextColor2] = useState(true)
-    console.log(textColor)
+    const {logIn} = useContext(AuthContext)
+
+
+    const handleLogin = (e)=>{
+        e.preventDefault()
+        const form = e.target
+        const email = form.email.value
+        const password = form.password.value
+        console.log(email, password)
+        logIn(email, password)
+        .then(result =>{
+            const loginUser = result.user
+            console.log(loginUser)
+        })
+        .catch(error=> console.error(error))
+    }
+
     return (
         <div className="relative flex justify-center">
             <img src={back} alt="" className="absolute z-0 h-[900px] w-full object-cover md:object-fill" />
@@ -36,17 +53,17 @@ const Login = () => {
                         <p className="px-3 text-[#431A20]">OR</p>
                         <hr className="w-full bg-[#431A20]" />
                     </div>
-                    <form noValidate="" action="" className="space-y-12">
+                    <form onSubmit={handleLogin} className="space-y-12">
                         <div className="space-y-4">
                             <div>
                                 <label htmlFor="email" className="block mb-2 text-sm text-white">Email address</label>
-                                <input type="email text-white" name="email" id="email" placeholder="your email" className="w-full px-3 py-2 border-b-[#431A20] border-b placeholder-[#431A20] focus:placeholder-transparent focus:border-b-[#431A20] duration-150 focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                <input type="email text-white" name="email" placeholder="your email" className="w-full px-3 py-2 border-b-[#431A20] border-b placeholder-[#431A20] focus:placeholder-transparent focus:border-b-[#431A20] duration-150 focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                             </div>
                             <div>
                                 <div className="flex justify-between mb-2">
                                     <label htmlFor="password" className="text-sm text-white">Password</label>
                                 </div>
-                                <input type="password" name="password" id="password" placeholder="password" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                <input type="password" name="password" placeholder="password" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                             </div>
                         </div>
                         <div className="space-y-2">
