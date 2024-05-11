@@ -2,15 +2,17 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
 
-const PrivateRoute = ({children}) => {
-    const {user, loading} = useContext(AuthContext)
+const PrivateRoute = ({ children }) => {
+    const { user, loading } = useContext(AuthContext)
     const location = useLocation()
     console.log(location)
 
-    if(loading){
-        return <progress className="progress w-56"></progress>
+    if (loading) {
+        return <div className="w-full h-full flex justify-center my-auto mt-[150px]">
+            <span className="loading loading-infinity loading-lg"></span>
+        </div>
     }
-    if(user?.email){
+    if (user) {
         return children
     }
 

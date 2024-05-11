@@ -38,7 +38,7 @@ const router = createBrowserRouter([
           element: <Register></Register>
         },
         {
-          path: '/myquery',
+          path:'/myquery',
           element: <PrivateRoute><MyQuery></MyQuery></PrivateRoute>
         }
       ]

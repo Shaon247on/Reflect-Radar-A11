@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import auth from '../../../firebase/firebase.config';
 const NavBar = () => {
 
-    const { logOut, user} = useContext(AuthContext)
+    const { logOut, user } = useContext(AuthContext)
 
     const navButtons = <>
         <li><NavLink to='/'>Home</NavLink></li>
@@ -18,12 +18,13 @@ const NavBar = () => {
 
     const handleLogOut = () => {
         logOut(auth)
-        .then(result => {
-            const user = result.user
-            console(user)
-        })
-        .catch(error=> console.error(error))
+            .then(result => {
+                const user = result.user
+                console(user)
+            })
+            .catch(error => console.error(error))
     }
+
     return (
         <div className="navbar bg-base-100 container mx-auto ">
             <div className="navbar-start">
@@ -44,12 +45,16 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user? 
-                    <>
-                    <img alt="No Image" />
-                    <Link to='/login'><button onClick={handleLogOut} className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Sign Out</button></Link>
-                    </>:
-                    <Link to='/login'><button className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Login</button></Link>
+                    user ?
+                        <div className='flex gap-4 items-center'>
+                            <div className="avatar">
+                                <div className="w-12 rounded-full">
+                                    <img title={user.displayName} src={user.photoURL} className='object-cover object-center'/>
+                                </div>
+                            </div>                            
+                            <Link to='/login'><button onClick={handleLogOut} className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Sign Out</button></Link>
+                        </div> :
+                        <Link to='/login'><button className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Login</button></Link>
                 }
             </div>
         </div>
