@@ -8,6 +8,7 @@ import AllQueries from '../Pages/AllQuries/AllQueries/AllQueries';
 import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import PrivateRoute from './PrivateRoute';
 import MyQuery from '../Pages/MyQuery/MyQuery/MyQuery';
+import QueryDetails from '../Pages/AllQuries/QueryDetails/QueryDetails';
 
 const router = createBrowserRouter([
     {
@@ -18,12 +19,12 @@ const router = createBrowserRouter([
         {
           path: '/',
           element: <Home></Home>,
-          loader: ()=> fetch('data.json')
+          loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/queries`)
         },
         {
           path: '/queries',
           element: <AllQueries></AllQueries>,
-          loader: ()=> fetch('data.json')
+          loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/queries`)
         },
         {
           path: '/contactus',
@@ -40,6 +41,11 @@ const router = createBrowserRouter([
         {
           path:'/myquery',
           element: <PrivateRoute><MyQuery></MyQuery></PrivateRoute>
+        },
+        {
+          path:'/querydetails/:id',
+          element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/${params.id}`)
         }
       ]
     },

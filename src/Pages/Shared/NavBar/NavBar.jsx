@@ -10,7 +10,7 @@ const NavBar = () => {
 
     const navButtons = <>
         <li><NavLink to='/'>Home</NavLink></li>
-        <li><NavLink to='/queries'>queries</NavLink></li>
+        <li><NavLink to='/queries'>All Queries</NavLink></li>
         <li><NavLink to='/contactus'>Contact Us</NavLink></li>
         <li><NavLink to='/myquery'>My Query</NavLink></li>
     </>
@@ -49,12 +49,12 @@ const NavBar = () => {
                         <div className='flex gap-4 items-center'>
                             <div className="avatar">
                                 <div className="w-12 rounded-full">
-                                    <img title={user.displayName} src={user.photoURL} className='object-cover object-center'/>
+                                    <img referrerPolicy='no-referrer' title={user.displayName} src={user.photoURL} className='object-cover object-center'/>
                                 </div>
                             </div>                            
-                            <Link to='/login'><button onClick={handleLogOut} className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Sign Out</button></Link>
+                            <Link to='/login'><button onClick={handleLogOut} className="rounded-lg px-4 md:px-10 py-2 md:py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Sign Out</button></Link>
                         </div> :
-                        <Link to='/login'><button className="rounded-lg px-10 py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Login</button></Link>
+                        <Link to='/login'><button className="rounded-lg px-4 md:px-10 py-2 md:py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none">Login</button></Link>
                 }
             </div>
         </div>

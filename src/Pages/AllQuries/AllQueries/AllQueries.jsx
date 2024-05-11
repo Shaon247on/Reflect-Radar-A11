@@ -15,7 +15,7 @@ const AllQueries = () => {
             </div>
             <div className=" text-center space-y-2 mb-10">
                 <div>
-                    <h1 className="text-lg font-semibold">Select Layout</h1>
+                    <h1 className="text-lg font-semibold hidden md:block">Select Layout</h1>
                 </div>
                 <div className="text-center space-x-3 hidden lg:block">
                     <button onClick={() => setGrid(2)} className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-500 border-none text-white">2</button>

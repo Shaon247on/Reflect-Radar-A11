@@ -1,7 +1,8 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 const RecentQueries = ({ product }) => {
     console.log(product)
-    const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail } = product
+    const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = product
     return (
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
             <img className="object-cover object-center w-full h-64 hover:scale-105 duration-200 overflow-hidden" src={ProductImageURL} alt="Article" />
@@ -29,7 +30,7 @@ const RecentQueries = ({ product }) => {
                     </div>
                     <div className="flex justify-around items-center mt-5">
                         <p><span className="font-semibold">Total Recommendation:</span> 4</p>
-                        <button className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-500 border-none"><FaArrowRightLong className="text-white"></FaArrowRightLong></button>
+                        <Link to={`/querydetails/${_id}`}><button className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-500 border-none"><FaArrowRightLong className="text-white"></FaArrowRightLong></button></Link>
                     </div>
                 </div>
             </div>

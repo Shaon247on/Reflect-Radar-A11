@@ -16,7 +16,7 @@ const MyQuery = () => {
 
     const getData = async () => {
         const { data } = await axios(
-            `http://localhost:5000/queries/${user.email}`
+            `${import.meta.env.VITE_API_URL}/queries/${user.email}`
         )
         setQueries(data)
     }
