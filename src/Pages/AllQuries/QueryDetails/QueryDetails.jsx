@@ -2,28 +2,20 @@ import { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import axios from 'axios';
+import Recommended from './Recommended';
 
 const QueryDetails = () => {
     const [currentDateTime, setCurrentDateTime] = useState(new Date(Date.now()));
+    const [toggle, setToggle] = useState(true)
     const query = useLoaderData()
     const { id } = useParams()
     const { user } = useContext(AuthContext)
     const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = query
+    
 
-    useEffect(()=>{
-        const getData= async()=>{
-            try{
-                const {data} = await axios(`${import.meta.env.VITE_API_URL}/recommend/${_id}`)
-                console.log(data)
-            } catch (err){
-                console.log(err)
-            }
-        }
-        getData()
-    },[])
-
-    const handleRecommendation = async(e) => {
+    const handleRecommendation = async (e) => {
         e.preventDefault()
+        setToggle(!toggle)
         const form = e.target
         const img = form.img.value
         const title = form.title.value
@@ -51,33 +43,14 @@ const QueryDetails = () => {
             authorName,
             postId
         }
-        const url= `${import.meta.env.VITE_API_URL}/recommend`
-
-
-
-        // fetch('http://localhost:5000/recommend', {
-        //     method: "POST",
-        //     headers:{
-        //         "Content-type": "application/json"
-        //     },
-        //     body:JSON.stringify(recommendationData)
-        // })
-        // .then(res=> res.json())
-        // .then(data=> console.log(data))
-       
-        // axios.post(url, recommendationData)
-        // .then(res =>{
-        //     console.log(res.Date)
-        // })
-        // .catch(error=> console.error(error))
-
+        const url = `${import.meta.env.VITE_API_URL}/recommend`
 
         try {
             const { data } = await axios.post(url, recommendationData)
             console.log(data)
         } catch (err) {
             console.log(err);
-        }
+        }      
     }
 
     return (
@@ -126,11 +99,12 @@ const QueryDetails = () => {
                         <div className="flex flex-col max-w-lg p-6 space-y-6 overflow-hidden rounded-lg shadow-md dark:bg-gray-50 dark:text-gray-800">
                             <div className=" flex items-center justify-between">
                                 <div className='flex gap-3 items-center'>
-                                    <img alt="" src="https://source.unsplash.com/100x100/?portrait" className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
+                                    <img alt="" src={Image} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                                     <div className=" flex items-center justify-between">
                                         <div className='flex flex-col space-y-1'>
                                             <a rel="noopener noreferrer" href="#" className="text-sm font-semibold">Leroy Jenkins</a>
-                                            <span className="text-xs dark:text-gray-600">4 hours ago</span>
+                                            {/* <span className="text-xs dark:text-gray-600">{new Date(CurrentDateAndTime).toLocaleDateString}</span> */}
+                                            <span className="text-xs dark:text-gray-600">{CurrentDateAndTime.slice(0,10)}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -181,22 +155,8 @@ const QueryDetails = () => {
 
                 {/* Recent Recommendations */}
 
-                <div className="py-2 col-span-12  md:col-span-12 lg:col-span-3 mt-16  md:mx-auto ">
-                    <div className="mb-6 flex gap-3 items-center border-b-2 pb-6">
-                        <h4 className="text-xs font-bold uppercase dark:border-violet-600">Recent Recommendations</h4>
-                        <p className='text-blue-600 bg-blue-100 rounded-lg px-3 font-bold'>4</p>
-                    </div>
-                    <div className="flex flex-col divide-y dark:divide-gray-300">
-                        <div className="flex px-1 py-4">
-                            <img alt="" className="flex-shrink-0 object-cover w-20 h-20 mr-4 dark:bg-gray-500" src="https://source.unsplash.com/random/244x324" />
-                            <div className="flex flex-col flex-grow">
-                                <a rel="noopener noreferrer" href="#" className="font-serif hover:underline">Aenean ac tristique lorem, ut mollis dui.</a>
-                                <p className="mt-auto text-xs dark:text-gray-600">5 minutes ago
-                                    <a rel="noopener noreferrer" href="#" className="block dark:text-blue-600 lg:ml-2 lg:inline hover:underline">Politics</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <div className="py-2 col-span-12  md:col-span-12 lg:col-span-3 mt-16  md:mx-auto ">                    
+                    <Recommended props={_id} toggle={toggle}></Recommended>
                 </div>
             </div>
         </div>
