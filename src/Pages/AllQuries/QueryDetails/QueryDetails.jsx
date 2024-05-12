@@ -1,11 +1,85 @@
+import { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
+import axios from 'axios';
 
 const QueryDetails = () => {
+    const [currentDateTime, setCurrentDateTime] = useState(new Date(Date.now()));
     const query = useLoaderData()
     const { id } = useParams()
-
+    const { user } = useContext(AuthContext)
     const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = query
-    console.log(id, query);
+
+    useEffect(()=>{
+        const getData= async()=>{
+            try{
+                const {data} = await axios(`${import.meta.env.VITE_API_URL}/recommend/${_id}`)
+                console.log(data)
+            } catch (err){
+                console.log(err)
+            }
+        }
+        getData()
+    },[])
+
+    const handleRecommendation = async(e) => {
+        e.preventDefault()
+        const form = e.target
+        const img = form.img.value
+        const title = form.title.value
+        const reason = form.reason.value
+        const product = form.product.value
+        const name = user?.displayName
+        const email = user?.email
+        const image = user?.photoURL
+        const authorEmail = UserEmail
+        const authorName = Name
+        const time = currentDateTime
+        const queryTittle = QueryTitle
+        const postId = id
+        const recommendationData = {
+            img,
+            image,
+            title,
+            name,
+            reason,
+            email,
+            authorEmail,
+            time,
+            queryTittle,
+            product,
+            authorName,
+            postId
+        }
+        const url= `${import.meta.env.VITE_API_URL}/recommend`
+
+
+
+        // fetch('http://localhost:5000/recommend', {
+        //     method: "POST",
+        //     headers:{
+        //         "Content-type": "application/json"
+        //     },
+        //     body:JSON.stringify(recommendationData)
+        // })
+        // .then(res=> res.json())
+        // .then(data=> console.log(data))
+       
+        // axios.post(url, recommendationData)
+        // .then(res =>{
+        //     console.log(res.Date)
+        // })
+        // .catch(error=> console.error(error))
+
+
+        try {
+            const { data } = await axios.post(url, recommendationData)
+            console.log(data)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     return (
         <div className='px-5 py-10 dark:bg-gray-100 dark:text-gray-800'>
             <div className='container grid grid-cols-12 mx-auto gap-y-6 md:gap-9 min-h-[700px]'>
@@ -17,27 +91,27 @@ const QueryDetails = () => {
                         <div className=''>
                             <h1 className='text-center text-2xl pb-5 border-b mt-8 font-bold font-playfair'> Your Recommendation</h1>
                         </div>
-                        <form noValidate="" action="" className="container flex flex-col mx-auto space-y-12">
+                        <form onSubmit={handleRecommendation} className="container flex flex-col mx-auto space-y-12">
                             <fieldset className="">
                                 <div className="">
                                     <div className="col-span-full ">
-                                        <label htmlFor="firstname" className="text-sm">Title</label>
-                                        <input type="text" placeholder="recommendation title" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                        <label className="text-sm">Title</label>
+                                        <input name='title' type="text" placeholder="recommendation title" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                                     </div>
                                     <div className="col-span-full ">
-                                        <label htmlFor="lastname" className="text-sm">Product Name</label>
-                                        <input type="text" placeholder="product name" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                        <label className="text-sm">Product Name</label>
+                                        <input name='product' type="text" placeholder="product name" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                                     </div>
                                     <div className="col-span-full">
-                                        <label htmlFor="email" className="text-sm">Product Image</label>
-                                        <input type="text" placeholder="URL" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                        <label className="text-sm">Product Image</label>
+                                        <input name='img' type="text" placeholder="URL" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                                     </div>
                                     <div className="col-span-full">
                                         <label htmlFor="address" className="text-sm">Reason</label>
-                                        <textarea type="text" placeholder="reason" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                        <textarea name='reason' type="text" placeholder="reason" className="w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                                     </div>
                                     <div className="text-center mt-6">
-                                        <button type="button" className="w-full px-8 py-3 font-semibold rounded-md bg-[#CB2903] text-white hover:bg-[#431A20] duration-500">Post</button>
+                                        <input type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-[#CB2903] text-white hover:bg-[#431A20] duration-500" value='post' />
                                     </div>
                                 </div>
                             </fieldset>
@@ -108,9 +182,9 @@ const QueryDetails = () => {
                 {/* Recent Recommendations */}
 
                 <div className="py-2 col-span-12  md:col-span-12 lg:col-span-3 mt-16  md:mx-auto ">
-                    <div className="mb-6 flex items-center border-b-2 pb-6">
+                    <div className="mb-6 flex gap-3 items-center border-b-2 pb-6">
                         <h4 className="text-xs font-bold uppercase dark:border-violet-600">Recent Recommendations</h4>
-                        <p className='px-2 text-blue-600 bg-blue-100 font-bold'>4</p>
+                        <p className='text-blue-600 bg-blue-100 rounded-lg px-3 font-bold'>4</p>
                     </div>
                     <div className="flex flex-col divide-y dark:divide-gray-300">
                         <div className="flex px-1 py-4">
