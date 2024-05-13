@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import axios from 'axios';
 import Recommended from './Recommended';
+import toast from 'react-hot-toast';
 
 const QueryDetails = () => {
     const [currentDateTime, setCurrentDateTime] = useState(new Date(Date.now()));
@@ -11,6 +12,7 @@ const QueryDetails = () => {
     const { id } = useParams()
     const { user } = useContext(AuthContext)
     const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = query
+    
     
 
     const handleRecommendation = async (e) => {
@@ -45,6 +47,9 @@ const QueryDetails = () => {
         }
         const url = `${import.meta.env.VITE_API_URL}/recommend`
 
+        if(email === authorEmail){
+            toast.error(`You can't recommend at your own query.`)
+        }
         try {
             const { data } = await axios.post(url, recommendationData)
             console.log(data)
@@ -53,7 +58,7 @@ const QueryDetails = () => {
         }      
         form.reset()
     }
-
+   
     return (
         <div className='px-5 py-10 dark:bg-gray-100 dark:text-gray-800'>
             <div className='container grid grid-cols-12 mx-auto gap-y-6 md:gap-9 min-h-[700px]'>

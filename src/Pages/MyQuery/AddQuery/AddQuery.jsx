@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
+import toast from "react-hot-toast";
 
-const AddQuery = () => {
-    const {user} = useContext(AuthContext)
-    const {email, displayName, photoURL} = user
+const AddQuery = ({getData}) => {
+    const { user } = useContext(AuthContext)
+    const { email, displayName, photoURL } = user
+    const [toggle, setToggle] = useState(true)
     const [CurrentDateAndTime, setCurrentDateAndTime] = useState(new Date(Date.now()));
 
 
-
-    const handleQueryPost = async (e)=>{
-        e.preventDefault()
+   
+    const handleQueryPost = async (e) => {
+        e.preventDefault()        
         const form = e.target
         const ProductName = form.pName.value
         const ProductBrand = form.bName.value
@@ -18,7 +20,7 @@ const AddQuery = () => {
         const QueryTitle = form.title.value
         const BoycottingReasonDetails = form.bReason.value
         const recommendationCount = 0
-        
+
         const dataCollection = {
             ProductName,
             ProductImageURL,
@@ -37,19 +39,22 @@ const AddQuery = () => {
         try {
             const { data } = await axios.post(url, dataCollection)
             console.log(data)
+            toast.success('Query added successfully')
+            getData()
         } catch (err) {
             console.log(err);
-        } 
+        }
     }
     return (
         <div className="mb-20">
-            <div>                
-                <section className="w-[85%] h-[500px] overflow-hidden mx-auto">
+            <div>
+                <section className="w-[85%] h-[310px] md:h-[500px] overflow-hidden mx-auto">
                     <div className="relative mx-auto flex flex-col items-center text-center">
-                        <img src="https://i.pinimg.com/736x/31/ec/99/31ec99529072d31eceaa3a62d9891456.jpg" alt="" className="absolute z-0" />
-                        <div className="absolute z-10 top-[30px] md:top-[150px] lg:top-[170px] w-full lg:w-[550px]">
-                            <h1 className="text-[22px] md:text-4xl font-playfair font-bold leading-none text-[#431A20]">Seek Better<span className="dark:text-violet-600">Solution</span></h1>
-                            <p className="px-8 mt-8 mb-12 text-lg text-[#724F54]">Share your product concerns and discover superior alternatives with our community. Post your query now for tailored recommendations.</p>
+                        <img src="https://i.pinimg.com/736x/31/ec/99/31ec99529072d31eceaa3a62d9891456.jpg " alt="" className="absolute z-0 h-[230px] md:h-[500px]" />
+                        <div className="w-full lg:w-[69%] h-[230px] md:h-[500px] absolute z-10 bg-[#00000026]" />
+                        <div className="absolute z-20 top-[55px] md:top-[170px] lg:top-[180px] w-full lg:w-[550px]">
+                            <h1 className="text-[22px] md:text-4xl font-playfair font-bold leading-none text-[#CB2903]">Seek Better<span className="dark:text-violet-600">Solution</span></h1>
+                            <p className="px-8 mt-8 mb-12 text-base md:text-lg text-[#724F54]">Share your product concerns and discover superior alternatives with our community. Post your query now for tailored recommendations.</p>
                             <div className="flex flex-wrap justify-center">
                                 <button className="w-56 px-8 py-3 font-semibold rounded-md bg-[#CB2903] text-white hover:bg-[#431A20] duration-500" onClick={() => document.getElementById('my_modal_4').showModal()}>Post Now</button>
                             </div>
@@ -77,7 +82,7 @@ const AddQuery = () => {
                                     </div>
                                     <div className="col-span-full sm:col-span-3">
                                         <label className="">Brand Name</label>
-                                        <input type="text" name="bName"  placeholder="brand name" className="placeholder:text-[14px] w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
+                                        <input type="text" name="bName" placeholder="brand name" className="placeholder:text-[14px] w-full px-3 py-2 placeholder-[#431A20] focus:placeholder-transparent border-b-[#431A20] border-b focus:border-b-[#431A20] duration-150  focus:border-b-4 hover:border-b-[#431A20] hover:border-b-4 outline-none bg-transparent" />
                                     </div>
                                     <div className="col-span-full">
                                         <label htmlFor="email" className="">Product Image (URL)</label>

@@ -9,8 +9,15 @@ const MyQuery = () => {
     const [grid2, setGrid2] = useState(2)
     const [queries, setQueries] = useState([])
     const { user } = useContext(AuthContext)
+    const [toggle, setToggle] = useState(true)
+
+    const handleToggle= (data)=>{
+        console.log('data received from child:', data);
+        setToggle(data)
+    }
 
     useEffect(() => {
+       
         getData()
     }, [user])
 
@@ -20,18 +27,20 @@ const MyQuery = () => {
         )
         setQueries(data)
     }
+
+    
     console.log(queries)
 
     return (
         <div className="container mx-auto">
-            <AddQuery></AddQuery>
+            <AddQuery getData={getData}></AddQuery>
             <div>
                 <div className='text-center mb-5'>
                     <h1 className="text-2xl md:text-5xl font-bold mb-5 font-playfair">Explore All Your Queries</h1>
                     <p className="w-[290px] md:w-[600px] mx-auto mb-8">Browse through a comprehensive collection of your queries.</p>
                     <div className="text-start flex items-center gap-2">
                         <h1 className="font-bold text-lg">My {queries.length > 1 ? `Queries` : `Query`}</h1>
-                        <div className="badge bg-blue-100 gap-2">                            
+                        <div className="badge bg-blue-100 gap-2">
                             <p className="text-blue-600 font-semibold">{queries.length > 1 ? `${queries.length} Queries` : `${queries.length} Query`}</p>
                         </div>
                     </div>
@@ -52,7 +61,7 @@ const MyQuery = () => {
                 </div>
                 <div className={`grid grid-cols-1 md:grid-cols-${grid2} lg:grid-cols-${grid} gap-7 mx-4 md:mx-8 lg:mx-16`}>
                     {
-                        queries.map(query => <QueryCard key={query.ProductName} query={query}></QueryCard>)
+                        queries.map(query => <QueryCard getData={getData} key={query.ProductName} query={query}></QueryCard>)
                     }
                 </div>
             </div>
