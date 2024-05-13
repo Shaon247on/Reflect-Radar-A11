@@ -6,7 +6,6 @@ import toast from "react-hot-toast";
 const AddQuery = ({getData}) => {
     const { user } = useContext(AuthContext)
     const { email, displayName, photoURL } = user
-    const [toggle, setToggle] = useState(true)
     const [CurrentDateAndTime, setCurrentDateAndTime] = useState(new Date(Date.now()));
 
 

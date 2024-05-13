@@ -49,7 +49,7 @@ const QueryCard = ({ query, getData }) => {
                     </div>
                     <div className="flex items-center gap-6">
                         <button onClick={() => handleDelete(_id)} className="btn btn-circle text-2xl btn-sm md:btn-md hover:bg-red-700 duration-500 border-none"> <FaRegTrashCan className="text-lg hover:text-white duration-500"></FaRegTrashCan></button>
-                        <button className="btn btn-circle text-2xl btn-sm md:btn-md hover:bg-green-700 duration-500 border-none"><FaPencil className="text-lg hover:text-white duration-500"></FaPencil></button>
+                        <Link to={`/update/${_id}`}><button className="btn btn-circle text-2xl btn-sm md:btn-md hover:bg-green-700 duration-500 border-none"><FaPencil className="text-lg hover:text-white duration-500"></FaPencil></button></Link>
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ import ErrorPage from '../Pages/ErrorPage/ErrorPage';
 import PrivateRoute from './PrivateRoute';
 import MyQuery from '../Pages/MyQuery/MyQuery/MyQuery';
 import QueryDetails from '../Pages/AllQuries/QueryDetails/QueryDetails';
+import UpdateCard from '../Pages/MyQuery/QueryCard/UpdateCard';
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
         {
           path:'/querydetails/:id',
           element: <PrivateRoute><QueryDetails></QueryDetails></PrivateRoute>,
+          loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/query/${params.id}`)
+        },
+        {
+          path: '/update/:id',
+          element: <UpdateCard></UpdateCard>,
           loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/query/${params.id}`)
         }
       ]

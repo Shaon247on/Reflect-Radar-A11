@@ -50,11 +50,13 @@ const QueryDetails = () => {
         if(email === authorEmail){
             toast.error(`You can't recommend at your own query.`)
         }
-        try {
-            const { data } = await axios.post(url, recommendationData)
-            console.log(data)
-        } catch (err) {
-            console.log(err);
+        else{
+            try {
+                const { data } = await axios.post(url, recommendationData)
+                console.log(data)
+            } catch (err) {
+                console.log(err);
+            }
         }      
         form.reset()
     }
@@ -108,14 +110,14 @@ const QueryDetails = () => {
                                     <img alt="" src={Image} className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                                     <div className=" flex items-center justify-between">
                                         <div className='flex flex-col space-y-1'>
-                                            <a rel="noopener noreferrer" href="#" className="text-sm font-semibold">Leroy Jenkins</a>
+                                            <a rel="noopener noreferrer" href="#" className="text-sm font-semibold">{Name}</a>
                                             {/* <span className="text-xs dark:text-gray-600">{new Date(CurrentDateAndTime).toLocaleDateString}</span> */}
                                             <span className="text-xs dark:text-gray-600">{CurrentDateAndTime.slice(0,10)}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className='mr-3'>
-                                    <p className='text-sm'><span className='font-semibold'>Product:</span> {ProductName}</p>
+                                    <p className='text-sm'><span className='font-semibold'>Product:</span> {ProductName.slice(0,18)}</p>
                                     <p className='text-sm'><span className='font-semibold'>Brand:</span> {ProductBrand}</p>
                                 </div>
                             </div>
