@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import axios from 'axios';
@@ -51,6 +51,7 @@ const QueryDetails = () => {
         } catch (err) {
             console.log(err);
         }      
+        form.reset()
     }
 
     return (

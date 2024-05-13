@@ -23,7 +23,7 @@ const MyQuery = () => {
     console.log(queries)
 
     return (
-        <div>
+        <div className="container mx-auto">
             <AddQuery></AddQuery>
             <div>
                 <div className='text-center mb-5'>

@@ -2,7 +2,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Query = ({ product }) => {
     console.log(product)
-    const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = product
+    const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id, recommendationCount } = product
     return (
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
             <img className="object-cover object-center w-full h-64 hover:scale-105 duration-200 overflow-hidden" src={ProductImageURL} alt="Article" />
@@ -22,14 +22,14 @@ const Query = ({ product }) => {
                         <div className="flex items-center">
                             <img className="object-cover h-10 rounded-full" src={Image} alt="Avatar" />
                             <div className="flex flex-col items-start">
-                                <a href="#" className="text-base mx-2 font-semibold text-gray-700 dark:text-gray-200">{Name}</a>
-                                <a href="#" className="text-base mx-2 font-semibold text-gray-700 dark:text-gray-200">{UserEmail}</a>
+                                <a href="#" className="text-sm mx-2 font-semibold text-gray-700 dark:text-gray-200">{Name}</a>
+                                <a href="#" className="text-sm mx-2 font-semibold text-gray-700 dark:text-gray-200">{UserEmail.slice(0,20)}</a>
                             </div>
                         </div>
-                        <span className="mr-3 text-xs text-gray-600 dark:text-gray-300">{CurrentDateAndTime.slice(0, 10)}</span>
+                        <span className="mr-3 text-xs text-gray-600 dark:text-gray-300">{CurrentDateAndTime.slice(0,10)}</span>
                     </div>
                     <div className="flex justify-around items-center mt-5">
-                        <p><span className="font-semibold">Total Recommendation:</span> 4</p>
+                        <p className="font-semibold">Total Recommendation:{recommendationCount > 0 ? recommendationCount: 0}</p>
                         <Link to={`/querydetails/${_id}`}><button className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-500 border-none"><FaArrowRightLong className="text-white"></FaArrowRightLong></button></Link>
                     </div>
                 </div>
