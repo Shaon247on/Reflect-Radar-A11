@@ -9,12 +9,8 @@ const MyQuery = () => {
     const [grid2, setGrid2] = useState(2)
     const [queries, setQueries] = useState([])
     const { user } = useContext(AuthContext)
-    const [toggle, setToggle] = useState(true)
 
-    const handleToggle= (data)=>{
-        console.log('data received from child:', data);
-        setToggle(data)
-    }
+   
 
     useEffect(() => {
        

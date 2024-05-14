@@ -39,7 +39,7 @@ const UpdateCard = () => {
         try {
             const { data } = await axios.put(url, dataCollection)
             console.log(data)
-            toast.success('Query added successfully')
+            toast.success('Query Updated successfully')
             navigate('/myquery')
         } catch (err) {
             console.log(err);
