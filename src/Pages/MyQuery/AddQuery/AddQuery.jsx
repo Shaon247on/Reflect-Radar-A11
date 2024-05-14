@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import axios from "axios";
-import toast from "react-hot-toast";
+import Swal from 'sweetalert2'
 
 const AddQuery = ({getData}) => {
     const { user } = useContext(AuthContext)
@@ -38,7 +38,11 @@ const AddQuery = ({getData}) => {
         try {
             const { data } = await axios.post(url, dataCollection)
             console.log(data)
-            toast.success('Query added successfully')
+            Swal.fire({
+                title: "Done!",
+                text: "Query Posted Successfully",
+                icon: "success"
+              });
             getData()
         } catch (err) {
             console.log(err);

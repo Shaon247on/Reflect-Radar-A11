@@ -26,6 +26,7 @@ const QueryDetails = () => {
         const name = user?.displayName
         const email = user?.email
         const image = user?.photoURL
+        const authorImage = Image
         const authorEmail = UserEmail
         const authorName = Name
         const time = currentDateTime
@@ -40,10 +41,11 @@ const QueryDetails = () => {
             email,
             authorEmail,
             time,
-            queryTittle,
             product,
+            postId,
+            queryTittle,
             authorName,
-            postId
+            authorImage
         }
         const url = `${import.meta.env.VITE_API_URL}/recommend`
 

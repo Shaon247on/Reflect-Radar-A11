@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2'
 import toast from "react-hot-toast";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -8,15 +9,32 @@ const QueryCard = ({ query, getData }) => {
     const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = query
 
     const handleDelete = async id => {
-        try {
-            const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/query/${id}`)
-            console.log(data);
-            toast.success('Deleted Successfully')
-            getData()
-        } catch (err) {
-            console.log(err.message);
-            toast.error(err.message)
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then( async(result) =>{
+            if (result.isConfirmed) {
+                try {
+                    const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/query/${id}`)
+                    console.log(data);
+                    getData()
+                } catch (err) {
+                    console.log(err.message);
+                    toast.error(err.message)
+                }
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          })
+        
     }
     return (
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">

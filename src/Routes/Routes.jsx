@@ -10,6 +10,9 @@ import PrivateRoute from './PrivateRoute';
 import MyQuery from '../Pages/MyQuery/MyQuery/MyQuery';
 import QueryDetails from '../Pages/AllQuries/QueryDetails/QueryDetails';
 import UpdateCard from '../Pages/MyQuery/QueryCard/UpdateCard';
+import MyRecommendations from '../Pages/MyRecommendations/MyRecommendations';
+import ForRecommendation from '../Pages/ForRecommendation/ForRecommendation';
+import AboutUs from '../Pages/About Us/AboutUs';
 
 const router = createBrowserRouter([
     {
@@ -29,7 +32,11 @@ const router = createBrowserRouter([
         },
         {
           path: '/contactus',
-          element: <PrivateRoute><ContactUs></ContactUs></PrivateRoute>
+          element: <ContactUs></ContactUs>
+        },
+        {
+          path: '/aboutus',
+          element: <AboutUs></AboutUs>
         },
         {
           path: '/login',
@@ -50,8 +57,16 @@ const router = createBrowserRouter([
         },
         {
           path: '/update/:id',
-          element: <UpdateCard></UpdateCard>,
+          element: <PrivateRoute><UpdateCard></UpdateCard></PrivateRoute>,
           loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/query/${params.id}`)
+        },
+        {
+          path: '/myrecommendations',
+          element: <PrivateRoute><MyRecommendations></MyRecommendations></PrivateRoute>
+        },
+        {
+          path: '/forrecommendation',
+          element: <PrivateRoute><ForRecommendation></ForRecommendation></PrivateRoute>
         }
       ]
     },

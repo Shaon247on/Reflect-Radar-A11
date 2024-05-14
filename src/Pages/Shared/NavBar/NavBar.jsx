@@ -12,7 +12,12 @@ const NavBar = () => {
         <li><NavLink to='/'>Home</NavLink></li>
         <li><NavLink to='/queries'>All Queries</NavLink></li>
         <li><NavLink to='/contactus'>Contact Us</NavLink></li>
+        <li><NavLink to='/aboutus'>About Us</NavLink></li>
+       {user? <>
         <li><NavLink to='/myquery'>My Query</NavLink></li>
+        <li><NavLink to='/myrecommendations'>My Recommendations</NavLink></li>
+        <li><NavLink to='/forrecommendation'>Recommendations For Me</NavLink></li>
+       </>: ''}
     </>
 
 
