@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { createContext, useEffect, useState } from 'react';
 import auth from '../firebase/firebase.config';
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import useAsyncSort from '../Hooks/useAsyncSort';
 
 const providerGoogle = new GoogleAuthProvider();
 const providerGithub = new GithubAuthProvider();

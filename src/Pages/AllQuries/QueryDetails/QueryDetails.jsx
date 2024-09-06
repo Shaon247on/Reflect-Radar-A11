@@ -56,6 +56,10 @@ const QueryDetails = () => {
             try {
                 const { data } = await axios.post(url, recommendationData)
                 console.log(data)
+                const result = await axios.patch("http://localhost:5000/count", {
+                    id: postId
+                })
+                console.log(result);
             } catch (err) {
                 console.log(err);
             }

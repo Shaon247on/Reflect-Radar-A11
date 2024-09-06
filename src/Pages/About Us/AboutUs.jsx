@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaStar } from "react-icons/fa";
 import { HiMagnifyingGlassCircle } from "react-icons/hi2";
 import { IoIosChatbubbles } from "react-icons/io";

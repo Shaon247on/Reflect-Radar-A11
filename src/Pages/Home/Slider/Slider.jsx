@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
+import { Navigation,  Scrollbar, A11y } from 'swiper/modules';
 import { EffectFade } from 'swiper/modules';
 //css file for swiper
 import 'swiper/css';

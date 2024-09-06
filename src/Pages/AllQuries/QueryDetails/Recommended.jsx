@@ -4,6 +4,7 @@ import axios from 'axios';
 import useAsyncSort from '../../../Hooks/useAsyncSort';
 
 const Recommended = ({ props, toggle }) => {
+   
     const { user } = useContext(AuthContext)
     const [comments, setComments] = useState([])
 
@@ -15,8 +16,7 @@ const Recommended = ({ props, toggle }) => {
         getData()
     }, [toggle])
 
-    const sortedComments = useAsyncSort(comments)
-
+    const sortedComments = useAsyncSort(comments)   
     return (
         <div>
             <div className="mb-6 flex gap-3 items-center border-b-2 pb-6">
