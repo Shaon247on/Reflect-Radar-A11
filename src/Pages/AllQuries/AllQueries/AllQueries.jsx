@@ -60,9 +60,9 @@ const AllQueries = () => {
                     <input {...register('search')} placeholder="Search by product name" className='w-[200px] md:w-[280px] lg:w-[350px] px-3 py-2 placeholder-[#F5AB41] focus:placeholder-transparent border-b-[#F5AB41] border-b focus:border-b-[#F5AB41] duration-150  focus:border-b-4 hover:border-b-[#F5AB41] hover:border-b-4 outline-none bg-transparent' />
 
                     <select {...register('sort')} className='select select-warning w-full max-w-[200px]'>
-                        <option value="desc">Sort by Date</option>
-                        <option value="desc">Newest to Oldest</option>
-                        <option value="asc">Oldest to Newest</option>
+                        <option value="asc">Sort by Date</option>
+                        <option value="asc">Newest to Oldest</option>
+                        <option value="desc">Oldest to Newest</option>
                     </select>
                     <button className='rounded-lg px-4 md:px-10 py-2 md:py-3 text-white bg-[#CB2903] hover:bg-[#431A20] duration-500 border-none' type="submit">Apply</button>
                 </form>

@@ -8,7 +8,7 @@ const Team = () => {
                 <h1 className="text-4xl font-bold leading-none text-center sm:text-5xl hover:text-[#431A20] duration-500">The talented people behind the scenes</h1>
                 <div className="flex flex-row flex-wrap-reverse justify-center mt-8">
                     <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
-                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?0" />
+                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.pinimg.com/564x/b3/f8/a9/b3f8a9ffb414e67cc998f6a5ae244dcd.jpg" />
                         <div className="flex-1 my-4">
                             <p className="text-xl font-semibold leading-snug">Alex Thompson</p>
                             <p>Visual Designer</p>
@@ -38,7 +38,7 @@ const Team = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
-                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?1" />
+                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.pinimg.com/736x/d1/ab/18/d1ab18682b474ed747e9a8eb4a8d32f3.jpg" />
                         <div className="flex-1 my-4">
                             <p className="text-xl font-semibold leading-snug">Jasmine Patel</p>
                             <p>Front-end Designer</p>
@@ -68,7 +68,7 @@ const Team = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
-                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?2" />
+                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.pinimg.com/564x/61/15/be/6115becfdf9223b6ae5e25deaa8c7692.jpg" />
                         <div className="flex-1 my-4">
                             <p className="text-xl font-semibold leading-snug">Marcus Johnson</p>
                             <p>Back-End Designer</p>
@@ -98,7 +98,7 @@ const Team = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
-                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?3" />
+                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.pinimg.com/736x/29/9d/96/299d9632f8e0387f423b2fefdd9fc5db.jpg" />
                         <div className="flex-1 my-4">
                             <p className="text-xl font-semibold leading-snug">Emily Rodriguez</p>
                             <p>Senior Developer</p>
@@ -128,7 +128,7 @@ const Team = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
-                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?4" />
+                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.pinimg.com/564x/de/98/cc/de98cc811d73a0b448be9cbf91f97dfb.jpg" />
                         <div className="flex-1 my-4">
                             <p className="text-xl font-semibold leading-snug">Liam Chen</p>
                             <p>Junior Developer</p>
@@ -158,7 +158,7 @@ const Team = () => {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center w-full px-8 mx-6 my-12 text-center rounded-md md:w-96 lg:w-80 xl:w-64 dark:bg-gray-800 dark:text-gray-100">
-                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://source.unsplash.com/100x100/?portrait?5" />
+                        <img alt="" className="self-center flex-shrink-0 w-24 h-24 -mt-12 bg-center bg-cover rounded-full dark:bg-gray-500" src="https://i.pinimg.com/736x/5c/65/31/5c6531431b3c8e104c4ebda3038e7664.jpg" />
                         <div className="flex-1 my-4">
                             <p className="text-xl font-semibold leading-snug">Olivia Williams</p>
                             <p>Junior Developer</p>

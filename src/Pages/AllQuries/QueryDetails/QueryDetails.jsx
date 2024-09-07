@@ -56,7 +56,7 @@ const QueryDetails = () => {
             try {
                 const { data } = await axios.post(url, recommendationData)
                 console.log(data)
-                const result = await axios.patch("http://localhost:5000/count", {
+                const result = await axios.patch("https://assignment-11-battle-field-server.vercel.app/count", {
                     id: postId
                 })
                 console.log(result);
