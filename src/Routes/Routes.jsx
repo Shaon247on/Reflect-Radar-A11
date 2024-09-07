@@ -22,13 +22,11 @@ const router = createBrowserRouter([
       children:[
         {
           path: '/',
-          element: <Home></Home>,
-          loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/queries`)
+          element: <Home></Home>,          
         },
         {
           path: '/queries',
-          element: <AllQueries></AllQueries>,
-          loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/queries`)
+          element: <AllQueries></AllQueries>,         
         },
         {
           path: '/contactus',

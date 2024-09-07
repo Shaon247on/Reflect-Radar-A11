@@ -2,10 +2,10 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const RecentQueries = ({ product }) => {
     console.log(product)
-    const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id } = product
+    const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id,recommendationCount } = product
     return (
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
-            <img className="object-cover object-center w-full h-64 hover:scale-105 duration-200 overflow-hidden" src={ProductImageURL} alt="Article" />
+            <img className="object-cover object-center w-auto h-64 mx-auto hover:scale-105 duration-200 overflow-hidden" src={ProductImageURL} alt="Article" />
 
             <div className="p-6">
                 <div>
@@ -29,7 +29,7 @@ const RecentQueries = ({ product }) => {
                         <span className="mr-3 text-xs text-gray-600 dark:text-gray-300">{CurrentDateAndTime.slice(0, 10)}</span>
                     </div>
                     <div className="flex justify-around items-center mt-5">
-                        <p><span className="font-semibold">Total Recommendation:</span> 4</p>
+                        <p><span className="font-semibold">Total Recommendation:</span> {recommendationCount > 0 ? recommendationCount: 0}</p>
                         <Link to={`/querydetails/${_id}`}><button className="btn btn-circle bg-[#CB2903] btn-sm md:btn-md hover:bg-[#431A20] duration-500 border-none"><FaArrowRightLong className="text-white"></FaArrowRightLong></button></Link>
                     </div>
                 </div>

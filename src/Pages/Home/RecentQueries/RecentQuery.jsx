@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 const RecentQuery = () => {
     const [products, setProducts] = useState([])
-    useEffect(() => {
-        fetch(`${import.meta.env.VITE_API_URL}/queries`)
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch(`${import.meta.env.VITE_API_URL}/queries`)
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data))
+    // }, [])
     return (
         <div>
             <div className="text-center">

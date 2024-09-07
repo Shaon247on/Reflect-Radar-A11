@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Query = ({ product }) => {
-    console.log(product)
+    // console.log(product)
     const { BoycottingReasonDetails, CurrentDateAndTime, Image, Name, ProductBrand, ProductImageURL, ProductName, QueryTitle, UserEmail, _id, recommendationCount } = product
     return (
         <div className="overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
